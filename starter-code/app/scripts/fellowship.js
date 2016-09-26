@@ -19,7 +19,13 @@ var buddies = [
 var lands = ['The Shire', 'Rivendell', 'Mordor'];
 var body = document.querySelector('body');
 
+var newsection;
 
+var theringdiv;
+
+var theShire = body.getElementsByTagName('article')[0];
+var rivendell = body.getElementsByTagName('article')[1];
+var mordor = body.getElementsByTagName('article')[2];
 
 // Part 1
 
@@ -68,6 +74,8 @@ var h1land = [
   createh1land("Rivendell"),
   createh1land("Mordor")
 ];
+
+
 
 
 
@@ -154,6 +162,8 @@ function keepItSecretKeepItSafe() {
   var theringidatt = document.createAttribute('id');
   var theringclassatt = document.createAttribute('class');
 
+  var frodo = body.getElementsByTagName('li')[0];
+
   //set the attribute value
   theringidatt.value = 'the-ring';
   theringclassatt.value = 'magic-imbued-jewelry';
@@ -163,9 +173,14 @@ function keepItSecretKeepItSafe() {
   theringdiv.setAttributeNode(theringclassatt);
 
   body.appendChild(theringdiv);
+  frodo.appendChild(theringdiv);
+
+  theringdiv.addEventListener('click', nazgulScreech);
 
 
-//document.getElementById('the-ring').addEventListener('click', nazgulScreech);
+
+//ringselector.addEventListener('click', nazgulScreech);
+
 
 //function nazgulScreech() {
   //alert('hello');
@@ -187,35 +202,18 @@ keepItSecretKeepItSafe();
 
 function makeBuddies() {
 
-  var asidediv = document.createElement('aside');
-body.appendChild(asidediv);
+  var aside = document.createElement('aside');
+  var rivendell = body.getElementsByTagName('article')[1];
+    var buddyList = document.createElement('ul');
+    for(var i = 0; i < buddies.length; i++) {
+      // attach an unordered list of the 'buddies' in the aside
+      var buddy = document.createElement('li');
+      buddy.textContent = buddies[i];
+      buddyList.appendChild(buddy);
+    }
 
-  // create an aside tag
-
-
-  function makeUL2(array2) {
-      // Create the list element:
-      var list2 = document.createElement('ul');
-
-      for(var k = 0; k < array2.length; k++) {
-          // Create the list item:
-          var item2 = document.createElement('li');
-          // Set its contents:
-          item2.appendChild(document.createTextNode(array2[k]));
-
-          // Add it to the list:
-          list2.appendChild(item2);
-      }
-
-      // Finally, return the constructed list:
-      return list2;
-  }
-
-  // Add the contents of buddies[0] to aside div:
-  document.querySelector('article:nth-child(2)').appendChild(makeUL2(buddies));
-
-
-
+  aside.appendChild(buddyList);
+  rivendell.appendChild(aside);
 
 
   // attach an unordered list of the 'buddies' in the aside
@@ -247,9 +245,11 @@ beautifulStranger ();
 
 function leaveTheShire() {
 
-  var gettheshire = document.querySelector('article:nth-child(1)');
+var hobbits = document.querySelector('article:nth-child(1) ul');
+console.log(hobbits);
 
-('article:nth-child(2)').appendChild(gettheshire);
+document.querySelector('article aside').appendChild(hobbits);
+
 
 
 
@@ -261,31 +261,82 @@ leaveTheShire();
 
 
 function forgeTheFellowShip() {
-  // create a new div called 'the-fellowship' within rivendell
+
+// create a new div called 'the-fellowship' within rivendell
+var rivendell = document.querySelector('article:nth-child(2) aside');
+
+
+var thefellowshipdiv = document.createElement('div');
+  var fellowshipdivatt = document.createAttribute('id');
+
+  //set att to fellowship
+  fellowshipdivatt.value = 'the-fellowship';
+
+  //attatch the att
+  thefellowshipdiv.setAttributeNode(fellowshipdivatt);
+
+var fellowshipMembers = document.querySelectorAll('ul li');
+
+ for(var p = 0; p < fellowshipMembers.length; p++) {
+   thefellowshipdiv.appendChild(fellowshipMembers[p]);
+   alert(fellowshipMembers[p].textContent + ' has joined the fellowship!');
+ }
+
+rivendell.appendChild(thefellowshipdiv);
+
+
+
+
+
+
   // add each hobbit and buddy one at a time to 'the-fellowship'
   // after each character is added make an alert that they have joined your party
 }
+
+forgeTheFellowShip();
 
 
 // Part 8
 
 
 function theBalrog() {
-  // change the 'Gandalf' textNode to 'Gandalf the White'
+
+
+    // change the 'Gandalf' textNode to 'Gandalf the White'
+
+  var gandalftext = document.createTextNode("Gandalf the White");
+
+// Get the first child node of an <ul> element
+var getgandalf = document.querySelector("article:nth-child(2) ul li:nth-child(1)");
+
+getgandalf.replaceChild(gandalftext, getgandalf.childNodes[0]);
+
+getgandalf.style.background = "white";
+getgandalf.style.border = '1px grey';
+
   // apply style to the element
   // make the background 'white', add a grey border
 }
 
+theBalrog();
 
 // Part 9
 
 function hornOfGondor() {
+
+alert ('horn of gondor has been blown');
+
+var boromir = document.querySelector('#the-fellowship li')
+
+console.log (boromir);
+
+
   // pop up an alert that the horn of gondor has been blown
   // Boromir's been killed by the Uruk-hai!
   // put a linethrough on boromir's name
   // Remove Boromir from the Fellowship
 }
-
+hornOfGondor();
 
 // Part 10
 
