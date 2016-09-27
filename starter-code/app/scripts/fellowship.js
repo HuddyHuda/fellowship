@@ -235,23 +235,36 @@ var rivendell = document.querySelector('article:nth-child(2) aside');
 
 
 var thefellowshipdiv = document.createElement('div');
-  var fellowshipdivatt = document.createAttribute('id');
-
-  //set att to fellowship
-  fellowshipdivatt.value = 'the-fellowship';
-
-  //attatch the att
-  thefellowshipdiv.setAttributeNode(fellowshipdivatt);
-
-//add each hobbit and buddy at the sametime
-  var fellowshipMembers = document.querySelectorAll('li');
-
- for(var p = 0; p < fellowshipMembers.length; p++) {
- thefellowshipdiv.appendChild(fellowshipMembers[p]);
-   //alert(fellowshipMembers[p].textContent + ' has joined the fellowship!');
- }
+thefellowshipdiv.id= "the-fellowship";
 
 rivendell.appendChild(thefellowshipdiv);
+
+var fellowship = document.querySelector('#the-fellowship');
+
+var shireList = document.querySelector('article aside ul:nth-child(1)');
+console.log(shireList);
+shireList.id ='shireList';
+
+var rivendellList = document.querySelector('article aside ul:nth-child(2)');
+rivendellList.id ='rivendellList';
+
+shireList = shireList.querySelectorAll('li');
+rivendellList = rivendellList.querySelectorAll('li');
+
+for (var i = 0; i < shireList.length; i++) {
+  thefellowshipdiv.appendChild( shireList[i] );
+  alert(shireList[i] + "has joined your party");}
+
+for (var i = 0; i < rivendellList.length; i++) {
+  thefellowshipdiv.appendChild( rivendellList[i] );
+}
+
+var fellowshiplist = document.getElementById('the-fellowship');
+
+
+
+
+
 
 
 
@@ -271,12 +284,14 @@ forgeTheFellowShip();
 function theBalrog() {
 
 
+
+
     // change the 'Gandalf' textNode to 'Gandalf the White'
 
 var gandalftext = document.createTextNode("Gandalf the White");
 
 // Get the first child node of an <ul> element
-var getgandalf = document.querySelector("article:nth-child(2) ul li:nth-child(1)");
+var getgandalf = document.querySelector("#the-fellowship li:first-child");
 
 getgandalf.replaceChild(gandalftext, getgandalf.childNodes[0]);
 
@@ -295,10 +310,14 @@ function hornOfGondor() {
 
 alert ('horn of gondor has been blown');
 
-//var boromir = document.querySelector('#the-fellowship li:nth-child(5)')
+fellowshiplist = document.getElementById('the-fellowship');
 
-//console.log (boromir);
+var boromir = fellowshiplist.querySelector('li:nth-child(5)');
+//console.log(boromir);
 
+boromir.style.textDecoration = 'line-through';
+
+fellowshiplist.removeChild(boromir);
 
   // pop up an alert that the horn of gondor has been blown
   // Boromir's been killed by the Uruk-hai!
@@ -310,19 +329,56 @@ hornOfGondor();
 // Part 10
 
 function itsDangerousToGoAlone(){
+
+fellowshiplist = document.getElementById('the-fellowship');
+
+var frodo = fellowshiplist.querySelector('li:nth-child(5)');
+var sam = fellowshiplist.querySelector('li:nth-child(6)');
+
+//console.log(frodo);
+
+fellowshiplist.removeChild(frodo);
+fellowshiplist.removeChild(sam);
+
+var mountdoom = document.createElement('div');
+mountdoom.id = 'mount-doom';
+
+var mordor = document.querySelector('article:nth-child(3)');
+mordor.appendChild(mountdoom);
+
+mordor.appendChild(sam);
+mordor.appendChild(frodo);
+
+
+
   // take Frodo and Sam out of the fellowship and move them to Mordor
   // add a div with an id of 'mount-doom' to Mordor
 }
 
+itsDangerousToGoAlone();
 
 // Part 11
 
 function weWantsIt() {
+
+  var gollum = document.createElement('div');
+  gollum.id = 'gollum';
+
+  mordor = document.querySelector('article:nth-child(3)');
+
+  mordor.appendChild(gollum);
+
+
+
+
+
+
+
   // Create a div with an id of 'gollum' and add it to Mordor
   // Remove the ring from Frodo and give it to Gollum
   // Move Gollum into Mount Doom
 }
-
+weWantsIt();
 
 // Part 12
 
