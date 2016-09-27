@@ -37,60 +37,28 @@ function makeMiddleEarth() {
   var newsection = document.createElement('section');
 
   //create a id for section
+
   var sectionatt = document.createAttribute('id');
 
   //set the attribute value
-  sectionatt.value = 'middle-earth';
+sectionatt.value = 'middle-earth';
 
-  // attach the css value to the section
-  newsection.setAttributeNode(sectionatt);
+// attach the css value to the section
+newsection.setAttributeNode(sectionatt);
+
+
+  //
+
+  for (var l = 0; l < lands.length; l++){
+  var land = document.createElement('article');
+  land.innerHTML = "<h1>" + lands[l] + "</h1>"
+  newsection.appendChild(land);
+
+  }
 
 // append it
 body.appendChild(newsection);
 
-//test if its appended
-
-
-function createthreearticlediv(threearticle) {
-  var threearticlediv = document.createElement("article");
-  threearticlediv.appendChild(document.createTextNode(threearticle));
-  return threearticlediv;
-}
-
-var articledivs = [
-  createthreearticlediv(""),
-  createthreearticlediv(""),
-  createthreearticlediv("")
-];
-
-function createh1land(threeh1) {
-  var threeh1name = document.createElement("h1");
-  threeh1name.appendChild(document.createTextNode(threeh1));
-  return threeh1name;
-}
-
-var h1land = [
-  createh1land("The Shire"),
-  createh1land("Rivendell"),
-  createh1land("Mordor")
-];
-
-
-
-
-
-
-var docFrag = document.createDocumentFragment();
-for(var i = 0; i < articledivs.length; i++) {
-  docFrag.appendChild(articledivs[i]);
-(articledivs[0]).appendChild(h1land[0]);
-(articledivs[1]).appendChild(h1land[1]);
-(articledivs[2]).appendChild(h1land[2]);
-}
-
-
-
-(newsection).appendChild(docFrag);
 
 
 
@@ -275,11 +243,12 @@ var thefellowshipdiv = document.createElement('div');
   //attatch the att
   thefellowshipdiv.setAttributeNode(fellowshipdivatt);
 
-var fellowshipMembers = document.querySelectorAll('ul li');
+//add each hobbit and buddy at the sametime
+  var fellowshipMembers = document.querySelectorAll('li');
 
  for(var p = 0; p < fellowshipMembers.length; p++) {
-   thefellowshipdiv.appendChild(fellowshipMembers[p]);
-   alert(fellowshipMembers[p].textContent + ' has joined the fellowship!');
+ thefellowshipdiv.appendChild(fellowshipMembers[p]);
+   //alert(fellowshipMembers[p].textContent + ' has joined the fellowship!');
  }
 
 rivendell.appendChild(thefellowshipdiv);
@@ -304,7 +273,7 @@ function theBalrog() {
 
     // change the 'Gandalf' textNode to 'Gandalf the White'
 
-  var gandalftext = document.createTextNode("Gandalf the White");
+var gandalftext = document.createTextNode("Gandalf the White");
 
 // Get the first child node of an <ul> element
 var getgandalf = document.querySelector("article:nth-child(2) ul li:nth-child(1)");
@@ -326,9 +295,9 @@ function hornOfGondor() {
 
 alert ('horn of gondor has been blown');
 
-var boromir = document.querySelector('#the-fellowship li')
+//var boromir = document.querySelector('#the-fellowship li:nth-child(5)')
 
-console.log (boromir);
+//console.log (boromir);
 
 
   // pop up an alert that the horn of gondor has been blown
