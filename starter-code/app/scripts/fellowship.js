@@ -368,8 +368,10 @@ function weWantsIt() {
 
   mordor.appendChild(gollum);
 
+  document.getElementById('gollum').appendChild(document.getElementById('the-ring'));
 
-
+mountdoom = document.getElementById('mount-doom');
+mountdoom.appendChild(gollum);
 
 
 
@@ -383,7 +385,14 @@ weWantsIt();
 // Part 12
 
 function thereAndBackAgain() {
+
+gollum = document.querySelector('#gollum');
+theringdiv = document.querySelector('#the-ring');
+
+
   // remove Gollum and the Ring from the document
   // remove all the baddies from the document
   // Move all the hobbits back to the shire
 }
+
+thereAndBackAgain();
